@@ -1,6 +1,6 @@
-# iris-fhirsqlbuilder
+# iris-fhirsqlbuilder-dbt-integratedml
 
-This project shows how to use the FHIR SQL Builder to generate SQL statements for the FHIR Server from IRIS.
+This project shows how to use the FHIR SQL Builder to generate SQL statements for the FHIR Server from IRIS. Then it uses [dbt](https://getdbt.com) to transform the SQL data into ML-ready tables. Finally, these ML-ready tables are used as input to an IntegratedML machine learning model built to predict a patient's risk for stroke or lung cancer, as example applications.
 
 The end result will be available on Tableau.
 
@@ -8,9 +8,11 @@ The end result will be available on Tableau.
 
 ## Prerequisites
 
-- IRIS Community Edition
+- IRIS for Health with IntegratedML Community Edition
 - Git
 - Docker
+- Synthea to generate patient data
+- dbt
 - Tableau Desktop
 
 ## Installation
@@ -18,7 +20,7 @@ The end result will be available on Tableau.
 Git clone this repository.
 
 ```bash
-git clone https://github.com/grongierisc/iris-fhirsqlbuilder.git
+git clone https://github.com/isc-tdyar/iris-fhirsqlbuilder-dbt-integratedml.git
 ```
 
 Run the following command to start IRIS.
@@ -29,13 +31,13 @@ docker-compose up -d
 
 ### FHIR SQL Builder
 
-For your convenience, this project contains preloaded data in the FHIR Server.
+Synthea is required on your system to generate the patient data. For your convenience, pre-generated data is available on Amazon AWS S3 in a public bucket.
 
-Preloaded data is available in the following folder.
+Scripts to generate or copy the pre-generated data are provided in the following folder
 
-`data/fhir`
+`code/scripts` 
 
-#### Configure an FHIR Repository to analyze
+#### Configure a FHIR Repository to analyze
 
 Once IRIS is up and running, go to the FHIR SQL Builder and generate the SQL statements for the FHIR Server.
 
