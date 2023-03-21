@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+  iris:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports: 
+      - 33782:1972
+      - 33783:52773
+      - 33784:53773
+    volumes:
+      - ./:/irisdev/app
+  notebook:
+    build: 
+      context: notebook
+      dockerfile: dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebook/Notebooks:/Notebooks
+    command: "start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --notebook-dir=/Notebooks"
