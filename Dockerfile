@@ -21,7 +21,7 @@ RUN pip3 install iknowpy
 
 COPY src src
 COPY misc misc
-COPY data/fhir fhirdata
+COPY data/fhir/sample fhirdata
 COPY iris.script /tmp/iris.script
 COPY fhirUI /usr/irissys/csp/user/fhirUI
 
