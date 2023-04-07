@@ -1,9 +1,11 @@
-ARG IMAGE=intersystemsdc/irishealth-ml-community:preview
+#ARG IMAGE=intersystemsdc/irishealth-ml-community:preview
+ARG IMAGE=containers.intersystems.com/intersystems/irishealth-ml-arm64:2023.1.0.226.0
+
 FROM $IMAGE as builder
 
 USER root
 
-#COPY key/iris.key /usr/irissys/mgr/iris.key
+COPY key/iris.key /usr/irissys/mgr/iris.key
 
 # Update package and install sudo
 RUN apt-get update && apt-get install -y \
