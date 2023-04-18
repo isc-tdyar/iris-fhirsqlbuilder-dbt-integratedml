@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: fhir
+    schema: '{{ target.schema }}'
+    tables:
+      - name: Patient
+      - name: Observation
+      - name: Condition
+      - name: Procedure
+      - name: AllergyIntolerance
+

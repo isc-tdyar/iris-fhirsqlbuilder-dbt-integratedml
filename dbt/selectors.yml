@@ -1,0 +1,19 @@
+selectors:
+  - name: fhir_resources
+    description: "Views and CTEs for each FHIR resource"
+    definition:
+      union:
+        - method: path
+          value: models/fhir_resources/
+  - name: last
+    description: "Keep only last values for each resource type"
+    definition:
+      union:
+        - method: path
+          value: models/last/
+  - name: pivot
+    description: "Build pivots for each resource type"
+    definition:
+      union:
+        - method: path
+          value: models/pivot/

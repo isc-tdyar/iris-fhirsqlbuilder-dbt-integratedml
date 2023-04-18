@@ -1,0 +1,16 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [ {
+    "fullUrl": "urn:uuid:2ffd4a20-d9d6-11ed-915f-0242ac110002",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "2ffd4a20-d9d6-11ed-915f-0242ac110002",
+      "name": "Dummy International"
+    },
+    "request": {
+      "method": "POST",
+      "url": "Organization"
+    }
+  } ]
+}

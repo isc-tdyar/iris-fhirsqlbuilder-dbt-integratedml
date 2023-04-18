@@ -1,0 +1,5 @@
+FROM openjdk
+
+RUN curl -L https://github.com/synthetichealth/synthea/releases/download/v3.1.1/synthea-with-dependencies.jar -o synthea.jar
+
+CMD ["java", "-jar", "synthea.jar"]

@@ -1,0 +1,16 @@
+name: 'ml_on_fhir'
+
+config-version: 2
+version: '0.1.0'
+profile: 'ml_on_fhir'
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+
+models:
+  ml_on_fhir:
+    last:
+      +materialized: table
+    pivot:
+      +materialized: table
+    mlready:
+      +materialized: view
+

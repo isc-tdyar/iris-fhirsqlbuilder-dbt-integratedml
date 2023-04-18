@@ -1,0 +1,12 @@
+ml_on_fhir:
+  target: dev
+  outputs:
+    dev:
+      type: iris
+      host: localhost
+      port: 33782
+      user: fhir
+      pass: fhir
+      namespace: FHIRSERVER
+      schema: mlonfhir
+      threads: 4
