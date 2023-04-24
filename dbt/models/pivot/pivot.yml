@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: by_patient
+    tests:
+      - row_count_equals:
+          target: "{{ source('fhir', 'Patient') }}"
+    columns:
+      - name: '"C-263495000"'
+        tests:
+          - not_null
+          # - accepted_values:
+          #     values: ['male', 'female']
+
+  # - name: by_observation
+  #   columns:
+  #     - name: '"C-32623-1"'
+  #       tests:
+  #         - accepted_values:
+  #             values: ['normal', 'abnormal']

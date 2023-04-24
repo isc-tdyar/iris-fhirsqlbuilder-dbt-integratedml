@@ -5,6 +5,9 @@ version: '0.1.0'
 profile: 'ml_on_fhir'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
+vars:
+  fhirschema: fhir
+
 models:
   ml_on_fhir:
     last:
@@ -14,3 +17,9 @@ models:
     mlready:
       +materialized: view
 
+seeds:
+  ml_on_fhir:
+    synthea_lc_dataset_codes:
+      +column_types:
+        code: varchar(20)
+        name: varchar(1000)

@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: fhir
+    schema: "{{ var('fhirschema') }}"
+    tables:
+      - name: Patient
+      - name: Observation
+      - name: Condition
+      - name: Procedure
+      - name: AllergyIntolerance
+      - name: Encounter
+
+
+models:
+  - name: summary
+    tests:
+      - row_count_equals:
+          target: "{{ source('fhir', 'Patient') }}"
+
+# exposures:
+#   - name: mlready
+#     type: ml
+#     depends_on:
+#       - ref('summary')
+#     owner:
+#       name: CaretDev
+#       email: info@caretdev.com

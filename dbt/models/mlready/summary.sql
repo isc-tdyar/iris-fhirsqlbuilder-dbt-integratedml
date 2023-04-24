@@ -1,16 +1,17 @@
 {{ config(materialized='view') }}
-{% set tables = ['by_allergy', 'by_condition', 'by_procedure', 'by_observation'] %}
+{% set patients = ref('by_patient') %}
+{% set tables = ['by_allergy', 'by_condition', 'by_procedure', 'by_encounter', 'by_observation'] %}
 
 select 
     P.Key,
-    p.gender "263495000",
+    {{ dbt_utils.star(patients, except=['Key']) }},
     {% for table in tables %}
         {{ dbt_utils.star(ref(table), except=['Key']) }}
         {% if not loop.last %},{% endif %}
     {% endfor %}
 
-from {{ source('fhir', 'Patient') }}  P
+from {{ patients }}  P
 
 {% for table in tables %}
-    join {{ ref(table) }} "{{ table }}" ON ( "{{ table }}".Key = P.Key )
+    left join {{ ref(table) }} "{{ table }}" ON ( "{{ table }}".Key = P.Key )
 {% endfor %}

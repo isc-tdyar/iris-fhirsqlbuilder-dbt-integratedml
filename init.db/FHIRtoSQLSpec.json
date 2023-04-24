@@ -64,6 +64,42 @@
           "type": "String",
           "path": "Patient.maritalStatus.coding.display",
           "index": false
+        },
+        {
+          "name": "UsCoreEthnicityTextValueString",
+          "type": "String",
+          "path": "Patient.extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity').extension.where(url = 'text').valueString",
+          "index": false
+        },
+        {
+          "name": "UsCoreRaceTextValueString",
+          "type": "String",
+          "path": "Patient.extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race').extension.where(url = 'text').valueString",
+          "index": false
+        },
+        {
+          "name": "DeceasedDateTime",
+          "type": "String",
+          "path": "Patient.deceasedDateTime",
+          "index": false
+        },
+        {
+          "name": "UsCoreRaceOmbCategoryValueCodingCode",
+          "type": "String",
+          "path": "Patient.extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race').extension.where(url = 'ombCategory').valueCoding.code",
+          "index": false
+        },
+        {
+          "name": "UsCoreEthnicityOmbCategoryValueCodingCode",
+          "type": "String",
+          "path": "Patient.extension.where(url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity').extension.where(url = 'ombCategory').valueCoding.code",
+          "index": false
+        },
+        {
+          "name": "MaritalStatusCodingCode",
+          "type": "String",
+          "path": "Patient.maritalStatus.coding.code",
+          "index": false
         }
       ]
     },
@@ -146,6 +182,12 @@
           "type": "String",
           "path": "Observation.valueCodeableConcept.coding.display",
           "index": false
+        },
+        {
+          "name": "ValueString",
+          "type": "String",
+          "path": "Observation.valueString",
+          "index": false
         }
       ]
     },
@@ -185,6 +227,36 @@
           "name": "ServiceProviderReference",
           "type": "String",
           "path": "Encounter.serviceProvider.reference",
+          "index": false
+        },
+        {
+          "name": "ReasonCodeCodingCode",
+          "type": "String",
+          "path": "Encounter.reasonCode.coding.code",
+          "index": false
+        },
+        {
+          "name": "ReasonCodeCodingDisplay",
+          "type": "String",
+          "path": "Encounter.reasonCode.coding.display",
+          "index": false
+        },
+        {
+          "name": "Status",
+          "type": "String",
+          "path": "Encounter.status",
+          "index": false
+        },
+        {
+          "name": "TypeCodingCode",
+          "type": "String",
+          "path": "Encounter.type.coding.code",
+          "index": false
+        },
+        {
+          "name": "TypeCodingDisplay",
+          "type": "String",
+          "path": "Encounter.type.coding.display",
           "index": false
         }
       ]
@@ -295,6 +367,93 @@
           "name": "SubjectReference",
           "type": "String",
           "path": "Procedure.subject.reference",
+          "index": false
+        }
+      ]
+    },
+    {
+      "resourceType": "Medication",
+      "columns": [
+        {
+          "name": "CodeCodingCode",
+          "type": "String",
+          "path": "Medication.code.coding.code",
+          "index": false
+        },
+        {
+          "name": "CodeCodingDisplay",
+          "type": "String",
+          "path": "Medication.code.coding.display",
+          "index": false
+        },
+        {
+          "name": "Status",
+          "type": "String",
+          "path": "Medication.status",
+          "index": false
+        }
+      ]
+    },
+    {
+      "resourceType": "Immunization",
+      "columns": [
+        {
+          "name": "PatientReference",
+          "type": "String",
+          "path": "Immunization.patient.reference",
+          "index": false
+        },
+        {
+          "name": "EncounterReference",
+          "type": "String",
+          "path": "Immunization.encounter.reference",
+          "index": false
+        },
+        {
+          "name": "VaccineCodeCodingCode",
+          "type": "String",
+          "path": "Immunization.vaccineCode.coding.code",
+          "index": false
+        },
+        {
+          "name": "VaccineCodeCodingDisplay",
+          "type": "String",
+          "path": "Immunization.vaccineCode.coding.display",
+          "index": false
+        },
+        {
+          "name": "Status",
+          "type": "String",
+          "path": "Immunization.status",
+          "index": false
+        },
+        {
+          "name": "OccurrenceDateTime",
+          "type": "String",
+          "path": "Immunization.occurrenceDateTime",
+          "index": false
+        }
+      ]
+    },
+    {
+      "resourceType": "MedicationRequest",
+      "columns": [
+        {
+          "name": "SubjectReference",
+          "type": "String",
+          "path": "MedicationRequest.subject.reference",
+          "index": false
+        },
+        {
+          "name": "MedicationReferenceReference",
+          "type": "String",
+          "path": "MedicationRequest.medicationReference.reference",
+          "index": false
+        },
+        {
+          "name": "Status",
+          "type": "String",
+          "path": "MedicationRequest.status",
           "index": false
         }
       ]

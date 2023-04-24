@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: observation_last
+    tests:
+      - unique_group:
+          columns:
+            - SubjectReference
+            - CodeCodingCode
+
+  - name: encounter_last
+    tests:
+      - unique_group:
+          columns:
+            - SubjectReference
+            - ReasonCodeCodingCode
