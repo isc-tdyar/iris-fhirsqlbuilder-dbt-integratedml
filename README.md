@@ -12,10 +12,10 @@ docker-compose up -d --build
 
 The start may take a while, until the FHIR server will be installed and activated
 
-* Generate FHIR data with Synthea
+* Generate FHIR data with Synthea -- 100 patients, ages 30-100 years old, seed = 1234, clinician seed = 1234
 
 ```shell
-./run_synthea.sh -p 100 -a 30-100 -s 1000 -cs 1001
+./run_synthea.sh -p 100 -a 30-100 -s 1234 -cs 1234
 ```
 
 * Load FHIR Data to FHIRServer
@@ -42,7 +42,7 @@ dbt deps
 dbt debug
 ```
 
-* Load seends and run data transformation with tests
+* Load seeds and run data transformation with tests
 
 ```shell
 dbt build
