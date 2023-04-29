@@ -1,6 +1,13 @@
 # iris-fhirsqlbuilder-dbt-integratedml
 
-ML on FHIR
+"ML on FHIR"
+
+This repo demonstrates an end-to-end workflow to build an ML model for disease risk prediction starting from synthetic patient data in FHIR format, following these steps:
+* Generate FHIR data using synthea
+* Ingest that data into InterSystems IRIS FHIR Repository
+* Project FHIR data to SQL using InterSystems FHIR SQL Builder
+* Transform multiple SQL tables for Patient, Observation, etc. into a single ML-ready table using dbt
+* Build Machine Learning model within InterSystems IRIS using IntegratedML
 
 ## Prepare FHIR data for ML
 
