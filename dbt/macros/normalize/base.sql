@@ -15,6 +15,9 @@
 {{ macro(code, display, fields) }}
 {%- endmacro -%}
 
+{% macro load_references() %}
+{% endmacro %}
+
 {%- macro in_range(stored_value, stored_unit, values) -%}
 case 
 {% for (expected_unit, low, high) in values %}

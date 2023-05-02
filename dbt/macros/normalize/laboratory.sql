@@ -1014,3 +1014,30 @@
 {%- macro normalize__66534_9(code, display, fields) -%}
 {{ in_range(fields['value_quantity'], fields['value_unit'], [('%', 0, 40)]) }}
 {%- endmacro -%}
+
+{# normalize__default: 39156-5 #}
+{# normalize__default: 20565-8 #}
+{# normalize__default: 2069-3 #}
+{# normalize__default: 2339-0 #}
+{# normalize__default: 2947-0 #}
+{# normalize__default: 49765-1 #}
+{# normalize__default: 6298-4 #}
+{# normalize__default: 6299-2 #}
+{# normalize__default: 4548-4 #}
+{# normalize__default: 2708-6 #}
+{# normalize__default: 14959-1 #}
+{# normalize__default: 17861-6 #}
+{# normalize__default: 2075-0 #}
+{# normalize__default: 2345-7 #}
+{# normalize__default: 3094-0 #}
+{# normalize__default: 14804-9 #}
+{# normalize__default: 1988-5 #}
+{# normalize__default: 2157-6 #}
+{# normalize__default: 33959-8 #}
+{# normalize__default: 48065-7 #}
+{# normalize__default: 28245-9 #}
+{# normalize__default: 55277-8 #}
+{# normalize__default: 63513-6 #}
+{# normalize__default: 71802-3 #}
+{# normalize__default: 2713-6 #}
+{# normalize__default: 59032-3 #}
