@@ -4,6 +4,8 @@ Do ##class(HS.FHIRServer.Tools.DataLoader).SubmitResourceFiles("/docker-entrypoi
 
 zn "HSSYS"
 
+do ##class(HS.HC.FHIRSQL.Utils.Setup).CreateWebApps(,1)
+
 Set sc = ##class(Ens.Config.Credentials).SetCredential("fhir", "fhir", "fhir", 1)
 
 # Clean up, just in case

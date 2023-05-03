@@ -19,8 +19,9 @@ services:
       - ~/iris.key:/usr/irissys/mgr/iris.key
       - ./init.db/:/docker-entrypoint-initdb.d/
       - ./:/home/irisowner/ml-on-fhir/
+      - ./FHIRSERVERX0001R:/usr/irissys/mgr/FHIRSERVERX0001R
       - irissys:/usr/irissys
-    working_dir: /home/irisowner/ml-on-fhir
+    # working_dir: /home/irisowner/ml-on-fhir
 
   synthea:
     profiles:
