@@ -1,3 +1,4 @@
+import os
 from os import listdir
 from os.path import join
 from concurrent.futures import ProcessPoolExecutor
@@ -6,6 +7,7 @@ from concurrent.futures import as_completed
 import multiprocessing
 import time
 import requests
+import glob
 
 
 # load a file and return the contents
@@ -39,13 +41,15 @@ def load_files(filepaths):
 # load all files in a directory into memory
 def main(path="tmp"):
     print(f"process {path}")
-    # prepare all of the paths
-    paths = [join(path, filepath) for filepath in listdir(path)]
     n_workers = multiprocessing.cpu_count()
+    # prepare all of the paths
+    list_of_files = filter(os.path.isfile, glob.glob(path + "/*.json"))
+    list_of_files = sorted(list_of_files, key=lambda x: os.stat(x).st_size)
+    print(f"files {len(list_of_files)}")
     # create the process pool
     with ProcessPoolExecutor(n_workers) as executor:
         futures = []
-        for filepath in paths:
+        for filepath in list_of_files:
             future = executor.submit(load_file, filepath)
             futures.append(future)
         # process all results
