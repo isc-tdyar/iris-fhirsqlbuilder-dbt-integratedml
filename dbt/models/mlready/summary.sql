@@ -6,6 +6,7 @@ select
     P.Key,
     {{ dbt_utils.star(patients, except=['Key']) }},
     {% for table in tables %}
+        -- {{ table }}
         {{ dbt_utils.star(ref(table), except=['Key']) }}
         {% if not loop.last %},{% endif %}
     {% endfor %}

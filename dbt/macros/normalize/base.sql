@@ -27,7 +27,7 @@ else 'abnormal' end
 {%- endmacro -%}
 
 {%- macro normalize__default(code, display, fields) -%}
-{{ print('normalize__default: ' ~ code) }}
+{%- if execute -%}{{ print('normalize__default: ' ~ code) }}{% endif %}
 IFNULL({{ fields['value_quantity'] }}, NVL({{ fields['value_display'] }}, {{ fields['value_string'] }}), {{ fields['value_quantity'] }} || ' ' || {{ fields['value_unit'] }})
 {%- endmacro -%}
 
@@ -39,3 +39,30 @@ IFNULL({{ fields['value_quantity'] }}, NVL({{ fields['value_display'] }}, {{ fie
 {{ fields['value_quantity'] }}
 {%- endmacro -%}
 
+{%- macro normalize__85318_4(code, display, fields) -%}
+case when "ValueString" = 'greater than 2.2' then 'positive' else 'negative' end
+{%- endmacro -%}
+
+{%- macro normalize__28245_9(code, display, fields) -%}
+case when "ValueString" = 'Severe signs/symptoms' then 'severe' else 'no' end
+{%- endmacro -%}
+
+{%- macro normalize__55277_8(code, display, fields) -%}
+case when "ValueString" = 'HIV positive' then 'positive' else 'negative' end
+{%- endmacro -%}
+
+{%- macro normalize__63513_6(code, display, fields) -%}
+"ValueString"
+{%- endmacro -%}
+
+{%- macro normalize__75443_2(code, display, fields) -%}
+"ValueString"
+{%- endmacro -%}
+
+{%- macro normalize__84215_3(code, display, fields) -%}
+"ValueString"
+{%- endmacro -%}
+
+{%- macro normalize__71802_3(code, display, fields) -%}
+case when "ValueString" = 'Patient is homeless' then 'homeless' else null end
+{%- endmacro -%}

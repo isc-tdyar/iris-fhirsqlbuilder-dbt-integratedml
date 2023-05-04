@@ -1,0 +1,28 @@
+code,name,unit,low,high,gender
+39156-5,"Body Mass Index","kg/m2",18.5,24.9
+2339-0,"Glucose","mg/dL",70,99
+6299-2,"Urea Nitrogen","mg/dL",7,20
+49765-1,"Calcium","mg/dL",8.6,10.3
+2947-0,"Sodium","mmol/L",135,145
+6298-4,"Potassium","mmol/L",3.5,5.1 
+2069-3,"Chloride","mmol/L",98,107
+20565-8,"Carbon Dioxide","mmol/L",22,29
+4548-4,"Hemoglobin A1c/Hemoglobin.total in Blood","%",,5.7
+2708-6,"Oxygen saturation in Arterial blood","%",95,100
+2345-7,"Glucose [Mass/volume] in Serum or Plasma","mg/dL",70,99
+3094-0,"Urea nitrogen [Mass/volume] in Serum or Plasma","mg/dL",7,20
+17861-6,"Calcium [Mass/volume] in Serum or Plasma","mg/dL",8.6,10.3
+2075-0,"Chloride [Moles/volume] in Serum or Plasma","mmol/L",98,107
+48065-7,"Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma","ug/mL",,0.5
+14804-9,"Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma by Lactate,pyruvate reaction","U/L",140,280
+2157-6,"Creatine kinase [Enzymatic activity/volume] in Serum or Plasma","U/L",39,308,male
+2157-6,"Creatine kinase [Enzymatic activity/volume] in Serum or Plasma","U/L",26,192,female
+1988-5,"C reactive protein [Mass/volume] in Serum or Plasma","mg/L",0,10
+33959-8,"Procalcitonin [Mass/volume] in Serum or Plasma","ng/mL",,0.1
+14959-1,"Microalbumin Creatinine Ratio","mg/g",,30
+2713-6,"Oxygen Saturation","%",95,100
+59032-3,"Lactate [Mass/volume] in Blood","mmol/L",0.5,2.2
+38265-5,"DXA [T-score] Bone density","{T-score}",-1.0
+2028-9,"Carbon Dioxide","mmol/L",22,29
+2823-3,"Potassium","mmol/L",3.5,5.1
+2951-2,"Sodium","mmol/L",135,145
