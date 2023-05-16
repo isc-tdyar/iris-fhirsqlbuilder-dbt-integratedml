@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: fhir
-    schema: "{{ var('fhirschema') }}"
+    schema: fhiropt
     tables:
       - name: Patient
       - name: Observation

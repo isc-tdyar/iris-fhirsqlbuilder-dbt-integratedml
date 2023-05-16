@@ -1,7 +1,7 @@
 {%- set groupBy = "SubjectReference, CodeCodingCode, CodeCodingDisplay"  -%}
 
-select DISTINCT
-    %EXACT(SubjectReference) SubjectReference,
+select 
+    SubjectReference,
     CodeCodingCode,
     CodeCodingDisplay
 from {{ source('fhir', 'Procedure') }}

@@ -10,8 +10,8 @@
 
 {%- set groupBy = "SubjectReference, CodeCodingCode, CodeCodingDisplay"  -%}
 
-select DISTINCT
-    %EXACT(SubjectReference) SubjectReference,
+select 
+    SubjectReference,
     CodeCodingCode,
     CodeCodingDisplay,
     LAST_VALUE(ValueQuantityValue) over (PARTITION by {{ groupBy }}) ValueQuantityValue,
@@ -22,3 +22,5 @@ select DISTINCT
 from {{ source('fhir', 'Observation') }}
 
 inner join {{ ref('synthea_lc_dataset_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
+
+group by {{ groupBy }}

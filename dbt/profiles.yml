@@ -9,5 +9,5 @@ ml_on_fhir:
       pass: fhir
       namespace: FHIRSERVER
       schema: mlonfhir
-      threads: 1
+      threads: 10
       

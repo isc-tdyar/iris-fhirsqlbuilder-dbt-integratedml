@@ -188,6 +188,18 @@
           "type": "String",
           "path": "Observation.valueString",
           "index": false
+        },
+        {
+          "name": "Issued",
+          "type": "String",
+          "path": "Observation.issued",
+          "index": false
+        },
+        {
+          "name": "EffectiveDateTime",
+          "type": "String",
+          "path": "Observation.effectiveDateTime",
+          "index": false
         }
       ]
     },
