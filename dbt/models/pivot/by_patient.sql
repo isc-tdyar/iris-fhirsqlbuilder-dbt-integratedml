@@ -7,3 +7,5 @@ select
     MaritalStatusCodingCode "C-125680007" -- marital
 
 from {{ source('fhir', 'Patient') }}
+
+group by Key

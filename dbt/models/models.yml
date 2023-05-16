@@ -17,6 +17,22 @@ models:
     tests:
       - row_count_equals:
           target: "{{ source('fhir', 'Patient') }}"
+  - name: by_condition
+    tests:
+      - row_count_less_or_equals:
+          target: "{{ source('fhir', 'Patient') }}"
+  - name: by_allergy
+    tests:
+      - row_count_less_or_equals:
+          target: "{{ source('fhir', 'Patient') }}"
+  - name: by_encounter
+    tests:
+      - row_count_less_or_equals:
+          target: "{{ source('fhir', 'Patient') }}"
+  - name: by_procedure
+    tests:
+      - row_count_less_or_equals:
+          target: "{{ source('fhir', 'Patient') }}"
 
 # exposures:
 #   - name: mlready

@@ -25,5 +25,5 @@ select
     {% endfor %}
       
 from {{ source }}
-join {{ ref('by_patient') }} on (SubjectReference = Key)
+inner join {{ ref('by_patient') }} on (SubjectReference = Key)
 group by SubjectReference
