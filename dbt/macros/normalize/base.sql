@@ -66,3 +66,7 @@ case when "ValueString" = 'HIV positive' then 'positive' else 'negative' end
 {%- macro normalize__71802_3(code, display, fields) -%}
 case when "ValueString" = 'Patient is homeless' then 'homeless' else null end
 {%- endmacro -%}
+
+{%- macro normalize__417181009(code, display, fields) -%}
+case when "ValueCodeableConceptCodingCode" = '260385009' then 'negative' else null end
+{%- endmacro -%}
