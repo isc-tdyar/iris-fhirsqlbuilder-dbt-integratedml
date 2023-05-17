@@ -31,7 +31,7 @@ The start may take a while, until the FHIR server will be installed and activate
 * Load FHIR Data to FHIRServer
 
 ```shell
-./load-data.sh
+./load-data.py
 ```
 
 FHIR SQL Builder configured to expose FHIR data through SQL schema `fhir`
