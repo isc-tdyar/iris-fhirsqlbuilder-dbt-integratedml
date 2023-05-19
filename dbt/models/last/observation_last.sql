@@ -19,8 +19,11 @@ select
     LAST_VALUE(ValueCodeableConceptCodingCode) over (PARTITION by {{ groupBy }}) ValueCodeableConceptCodingCode,
     LAST_VALUE(ValueCodeableConceptCodingDisplay) over (PARTITION by {{ groupBy }}) ValueCodeableConceptCodingDisplay,
     LAST_VALUE(ValueString) over (PARTITION by {{ groupBy }}) ValueString
-from {{ source('fhir', 'Observation') }}
+from {{ source('fhir', 'Observation') }} Observation
 
 inner join {{ ref('synthea_lc_dataset_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
+
+inner join {{ ref('by_patient' )}} Patient on Patient.Key = Observation.SubjectReference 
+    and Observation.EffectiveDateTime between Patient.TargetStartDate and Patient.TargetEndDate
 
 group by {{ groupBy }}

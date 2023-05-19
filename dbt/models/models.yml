@@ -10,29 +10,42 @@ sources:
       - name: Procedure
       - name: AllergyIntolerance
       - name: Encounter
+        tests:
+          - meet_target:
+              target_code: "{{ var('target-code') }}"
 
 
 models:
-  - name: summary
+  - name: by_patient
     tests:
-      - row_count_equals:
+      - row_count_less_or_equals:
           target: "{{ source('fhir', 'Patient') }}"
+    columns:
+      - name: '"C-263495000"'
+        tests:
+          - not_null
+          # - accepted_values:
+          #     values: ['male', 'female']
   - name: by_condition
     tests:
       - row_count_less_or_equals:
-          target: "{{ source('fhir', 'Patient') }}"
+          target: "{{ ref('by_patient') }}"
   - name: by_allergy
     tests:
       - row_count_less_or_equals:
-          target: "{{ source('fhir', 'Patient') }}"
+          target: "{{ ref('by_patient') }}"
   - name: by_encounter
     tests:
       - row_count_less_or_equals:
-          target: "{{ source('fhir', 'Patient') }}"
+          target: "{{ ref('by_patient') }}"
   - name: by_procedure
     tests:
       - row_count_less_or_equals:
-          target: "{{ source('fhir', 'Patient') }}"
+          target: "{{ ref('by_patient') }}"
+  - name: summary
+    tests:
+      - row_count_equals:
+          target: "{{ ref('by_patient') }}"
 
 # exposures:
 #   - name: mlready

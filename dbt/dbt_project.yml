@@ -7,6 +7,10 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 vars:
   fhirschema: fhir
+  # 230690007 - Stroke
+  target-code: 230690007
+  minimal-age: 30
+  target-years: 30
 
 models:
   ml_on_fhir:
