@@ -13,12 +13,15 @@ Property CodeCodingDisplay As %String(COLLATION = "EXACT") [ Calculated, SqlComp
 /// Path: AllergyIntolerance.patient.reference
 Property PatientReference As %String(COLLATION = "EXACT") [ Calculated, SqlComputeCode = {set {*} = ##class(HS.HC.FHIRSQL.Utils.ResourceCommon).ExtractFHIR({%FHIR},"AllergyIntolerance.patient.reference",,$lb("hl7.fhir.r4.core@4.0.1"))}, SqlComputed ];
 
-Index DataIdx On (PatientReference, CodeCodingCode, CodeCodingDisplay) [ Data = ClinicalStatusCodingCode, Type = index ];
+Index DataIdx On (PatientReference, CodeCodingCode, CodeCodingDisplay) [ Data = (ClinicalStatusCodingCode, RecordedDate), Type = index ];
 
 Storage SQL
 {
 <SQLMap name="DataIdx">
 <Data name="ClinicalStatusCodingCode">
+<Piece>1</Piece>
+</Data>
+<Data name="RecordedDate">
 <Piece>1</Piece>
 </Data>
 <Global>^fhir.fhirsql.dataidx</Global>

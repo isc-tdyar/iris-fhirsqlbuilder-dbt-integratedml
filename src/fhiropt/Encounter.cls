@@ -7,14 +7,17 @@ Property ReasonCodeCodingCode As %String(COLLATION = "EXACT") [ Calculated, SqlC
 /// Path: Encounter.reasonCode.coding.display
 Property ReasonCodeCodingDisplay As %String(COLLATION = "EXACT") [ Calculated, SqlComputeCode = {set {*} = ##class(HS.HC.FHIRSQL.Utils.ResourceCommon).ExtractFHIR({%FHIR},"Encounter.reasonCode.coding.display",,$lb("hl7.fhir.r4.core@4.0.1"))}, SqlComputed ];
 
-/// Path: Encounter.serviceProvider.reference
-Property ServiceProviderReference As %String(COLLATION = "EXACT") [ Calculated, SqlComputeCode = {set {*} = ##class(HS.HC.FHIRSQL.Utils.ResourceCommon).ExtractFHIR({%FHIR},"Encounter.serviceProvider.reference",,$lb("hl7.fhir.r4.core@4.0.1"))}, SqlComputed ];
+/// Path: Encounter.subject.reference
+Property SubjectReference As %String(COLLATION = "EXACT") [ Calculated, SqlComputeCode = {set {*} = ##class(HS.HC.FHIRSQL.Utils.ResourceCommon).ExtractFHIR({%FHIR},"Encounter.subject.reference",,$lb("hl7.fhir.r4.core@4.0.1"))}, SqlComputed ];
 
-Index DataIdx On (SubjectReference, ReasonCodeCodingCode, ReasonCodeCodingDisplay);
+Index DataIdx On (SubjectReference, ReasonCodeCodingCode, ReasonCodeCodingDisplay) [ Data = PeriodStart ];
 
 Storage SQL
 {
 <SQLMap name="DataIdx">
+<Data name="PeriodStart">
+<Piece>1</Piece>
+</Data>
 <Global>^fhir.fhirsql.dataidx</Global>
 <RowIdSpec name="1">
 <Expression>{S5}</Expression>

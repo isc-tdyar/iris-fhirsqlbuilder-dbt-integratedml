@@ -10,11 +10,14 @@ Property CodeCodingDisplay As %String(COLLATION = "EXACT") [ Calculated, SqlComp
 /// Path: Procedure.subject.reference
 Property SubjectReference As %String(COLLATION = "EXACT") [ Calculated, SqlComputeCode = {set {*} = ##class(HS.HC.FHIRSQL.Utils.ResourceCommon).ExtractFHIR({%FHIR},"Procedure.subject.reference",,$lb("hl7.fhir.r4.core@4.0.1"))}, SqlComputed ];
 
-Index DataIdx On (SubjectReference, CodeCodingCode, CodeCodingDisplay) [ Type = index ];
+Index DataIdx On (SubjectReference, CodeCodingCode, CodeCodingDisplay) [ Data = PerformedPeriodStart, Type = index ];
 
 Storage SQL
 {
 <SQLMap name="DataIdx">
+<Data name="PerformedPeriodStart">
+<Piece>1</Piece>
+</Data>
 <Global>^fhir.fhirsql.dataidx</Global>
 <RowIdSpec name="1">
 <Expression>{S5}</Expression>

@@ -9,11 +9,14 @@ Property CodeCodingDisplay As %String(COLLATION = "EXACT") [ Calculated, SqlComp
 /// Path: Observation.subject.reference
 Property SubjectReference As %String(COLLATION = "EXACT") [ Calculated, SqlComputeCode = {set {*} = ##class(HS.HC.FHIRSQL.Utils.ResourceCommon).ExtractFHIR({%FHIR},"Observation.subject.reference",,$lb("hl7.fhir.r4.core@4.0.1"))}, SqlComputed ];
 
-Index DataIdx On (SubjectReference, CodeCodingCode, CodeCodingDisplay) [ Data = (ValueQuantityValue, ValueQuantityUnit, ValueCodeableConceptCodingCode, ValueCodeableConceptCodingDisplay, ValueString), Type = index ];
+Index DataIdx On (SubjectReference, CodeCodingCode, CodeCodingDisplay) [ Data = (ValueQuantityValue, ValueQuantityUnit, ValueCodeableConceptCodingCode, ValueCodeableConceptCodingDisplay, ValueString, EffectiveDateTime), Type = index ];
 
 Storage SQL
 {
 <SQLMap name="DataIdx">
+<Data name="EffectiveDateTime">
+<Piece>4</Piece>
+</Data>
 <Data name="ValueCodeableConceptCodingCode">
 <Piece>3</Piece>
 </Data>
