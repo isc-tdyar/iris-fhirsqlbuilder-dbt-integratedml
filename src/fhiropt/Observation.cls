@@ -15,7 +15,7 @@ Storage SQL
 {
 <SQLMap name="DataIdx">
 <Data name="EffectiveDateTime">
-<Piece>5</Piece>
+<Piece>6</Piece>
 </Data>
 <Data name="ValueCodeableConceptCodingCode">
 <Piece>3</Piece>
