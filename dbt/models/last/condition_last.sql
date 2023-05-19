@@ -9,7 +9,7 @@ select
 from {{ source('fhir', 'Condition') }} Condition
 inner join {{ ref('synthea_lc_dataset_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
 inner join {{ ref('by_patient' )}} Patient on Patient.Key = Condition.SubjectReference 
-    and Condition.RecordedDate between Patient.TargetStartDate and Patient.TargetEndDate
+    and DATE(Condition.RecordedDate) between Patient.TargetStartDate and Patient.TargetEndDate
 
 where CodeCodingCode not in (select DISTINCT ReasonCodeCodingCode from {{ ref('encounter_last') }})
 

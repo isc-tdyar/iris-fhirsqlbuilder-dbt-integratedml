@@ -1,6 +1,6 @@
 select 
     Key,
-    DATEADD(year, -30, TargetDate) TargetStartDate,
+    DATE(DATEADD(year, -30, TargetDate)) TargetStartDate,
     TargetDate TargetEndDate,
     "C-263495000",
     "C-424144002",
@@ -11,7 +11,7 @@ from (
     select 
         Patient.Key,
         Gender "C-263495000", -- gender
-        NVL(PeriodStart, IFNULL("DeceasedDateTime", CURRENT_DATE, DATE("DeceasedDateTime"))) TargetDate,
+        NVL(DATE(PeriodStart), IFNULL("DeceasedDateTime", CURRENT_DATE, DATE("DeceasedDateTime"))) TargetDate,
         {{ age("BirthDate", "DeceasedDateTime") }} "C-424144002", -- age
         {{ race_ethnicity("UsCoreRaceOmbCategoryValueCodingCode") }} "C-103579009", -- race
         {{ race_ethnicity("UsCoreEthnicityOmbCategoryValueCodingCode") }} "C-186034007", -- ethnic

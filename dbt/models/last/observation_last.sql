@@ -24,6 +24,6 @@ from {{ source('fhir', 'Observation') }} Observation
 inner join {{ ref('synthea_lc_dataset_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
 
 inner join {{ ref('by_patient' )}} Patient on Patient.Key = Observation.SubjectReference 
-    and Observation.EffectiveDateTime between Patient.TargetStartDate and Patient.TargetEndDate
+    and DATE(Observation.EffectiveDateTime) between Patient.TargetStartDate and Patient.TargetEndDate
 
 group by {{ groupBy }}

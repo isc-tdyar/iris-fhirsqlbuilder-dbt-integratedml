@@ -18,3 +18,5 @@ from {{ patients }}  P
 {% for table in tables %}
     left join {{ ref(table) }} "{{ table }}" ON ( "{{ table }}".Key = P.Key )
 {% endfor %}
+
+order by {{ adapter.quote(target) }} desc
