@@ -4,7 +4,7 @@ services:
     build: 
       context: .
       args:
-        - IMAGE=containers.intersystems.com/intersystems/irishealth:2023.1.0.229.0
+        - IMAGE=containers.intersystems.com/intersystems/irishealth-ml:2023.1.0.229.0
     environment:
       - IRIS_USERNAME=fhir
       - IRIS_PASSWORD=fhir
@@ -20,6 +20,7 @@ services:
       - ./init.db/:/docker-entrypoint-initdb.d/
       - ./:/home/irisowner/ml-on-fhir/
       - ./FHIRSERVERX0001R:/usr/irissys/mgr/FHIRSERVERX0001R
+      - irissyslib:/usr/irissys/lib
       - irissys:/usr/irissys
     # working_dir: /home/irisowner/ml-on-fhir
 
@@ -45,3 +46,4 @@ services:
 
 volumes:
   irissys: 
+  irissyslib: 
