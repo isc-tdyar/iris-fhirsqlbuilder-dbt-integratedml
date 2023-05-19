@@ -129,6 +129,12 @@
           "type": "String",
           "path": "AllergyIntolerance.clinicalStatus.coding.code",
           "index": false
+        },
+        {
+          "name": "RecordedDate",
+          "type": "String",
+          "path": "AllergyIntolerance.recordedDate",
+          "index": false
         }
       ]
     },
@@ -270,6 +276,18 @@
           "type": "String",
           "path": "Encounter.type.coding.display",
           "index": false
+        },
+        {
+          "name": "PeriodStart",
+          "type": "String",
+          "path": "Encounter.period.start",
+          "index": false
+        },
+        {
+          "name": "PeriodEnd",
+          "type": "String",
+          "path": "Encounter.period.end",
+          "index": false
         }
       ]
     },
@@ -286,7 +304,7 @@
           "name": "DescriptionText",
           "type": "String",
           "path": "Goal.description.text",
-          "index": true
+          "index": false
         },
         {
           "name": "LifecycleStatus",
@@ -327,6 +345,24 @@
           "name": "ClinicalStatusCodingCode",
           "type": "String",
           "path": "Condition.clinicalStatus.coding.code",
+          "index": false
+        },
+        {
+          "name": "RecordedDate",
+          "type": "String",
+          "path": "Condition.recordedDate",
+          "index": false
+        },
+        {
+          "name": "AbatementDateTime",
+          "type": "String",
+          "path": "Condition.abatementDateTime",
+          "index": false
+        },
+        {
+          "name": "OnsetDateTime",
+          "type": "String",
+          "path": "Condition.onsetDateTime",
           "index": false
         }
       ]
@@ -379,6 +415,18 @@
           "name": "SubjectReference",
           "type": "String",
           "path": "Procedure.subject.reference",
+          "index": false
+        },
+        {
+          "name": "PerformedPeriodStart",
+          "type": "String",
+          "path": "Procedure.performedPeriod.start",
+          "index": false
+        },
+        {
+          "name": "PerformedPeriodEnd",
+          "type": "String",
+          "path": "Procedure.performedPeriod.end",
           "index": false
         }
       ]
