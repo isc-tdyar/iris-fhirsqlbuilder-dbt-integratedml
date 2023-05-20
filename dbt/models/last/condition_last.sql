@@ -7,7 +7,7 @@ select
     RecordedDate,
     LAST_VALUE(ClinicalStatusCodingCode) over (PARTITION by {{ groupBy }}) ClinicalStatusCodingCode
 from {{ source('fhir', 'Condition') }} Condition
-inner join {{ ref('synthea_lc_dataset_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
+inner join {{ ref('synthea_stroke_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
 inner join {{ ref('by_patient' )}} Patient on Patient.Key = Condition.SubjectReference 
     and DATE(Condition.RecordedDate) between Patient.TargetStartDate and Patient.TargetEndDate
 

@@ -23,7 +23,13 @@ models:
 
 seeds:
   ml_on_fhir:
-    synthea_lc_dataset_codes:
+    synthea-lc-dataset-codes:
       +column_types:
         code: varchar(20)
         name: varchar(1000)
+      alias: synthea_lc_codes
+    synthea-stroke-dataset-codes:
+      +column_types:
+        code: varchar(20)
+        name: varchar(1000)
+      alias: synthea_stroke_codes
