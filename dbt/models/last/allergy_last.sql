@@ -8,7 +8,7 @@ select
     LAST_VALUE(ClinicalStatusCodingCode) over (PARTITION by {{ groupBy }}) ClinicalStatusCodingCode
 from {{ source('fhir', 'AllergyIntolerance') }} AllergyIntolerance
 
-inner join {{ ref('synthea_stroke_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
+inner join {{ ref('synthea-stroke-dataset-codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
 inner join {{ ref('by_patient' )}} Patient on Patient.Key = AllergyIntolerance.PatientReference 
     and DATE(AllergyIntolerance.RecordedDate) <= Patient.TargetStartDate
 

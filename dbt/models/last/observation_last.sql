@@ -21,7 +21,7 @@ select
     LAST_VALUE(ValueString) over (PARTITION by {{ groupBy }}) ValueString
 from {{ source('fhir', 'Observation') }} Observation
 
-inner join {{ ref('synthea_stroke_codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
+inner join {{ ref('synthea-stroke-dataset-codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
 
 inner join {{ ref('by_patient' )}} Patient on Patient.Key = Observation.SubjectReference 
     and DATE(Observation.EffectiveDateTime) between Patient.TargetStartDate and Patient.TargetEndDate
