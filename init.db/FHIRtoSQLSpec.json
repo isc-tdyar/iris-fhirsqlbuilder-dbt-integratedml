@@ -251,7 +251,7 @@
           "name": "ReasonCodeCodingCode",
           "type": "String",
           "path": "Encounter.reasonCode.coding.code",
-          "index": false
+          "index": true
         },
         {
           "name": "ReasonCodeCodingDisplay",
