@@ -1,4 +1,11 @@
-{{ config(materialized='view') }}
+{{ 
+    config(
+        materialized='table',
+        indexes=[
+            {'name': 'KeyIdx', 'columns': ['Key'], 'unique': True},
+        ]
+    ) 
+}}
 {% set patients = ref('by_patient') %}
 {% set tables = ['by_allergy', 'by_condition', 'by_procedure', 'by_encounter', 'by_observation'] %}
 {% set target = 'C-' ~ var('target-code') %}
