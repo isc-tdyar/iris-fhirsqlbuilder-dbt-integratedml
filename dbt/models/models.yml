@@ -7,12 +7,11 @@ sources:
       - name: Patient
       - name: Observation
       - name: Condition
+        tests:
+          - meet_target
       - name: Procedure
       - name: AllergyIntolerance
       - name: Encounter
-        tests:
-          - meet_target:
-              target_code: "{{ var('target-code') }}"
 
 
 models:

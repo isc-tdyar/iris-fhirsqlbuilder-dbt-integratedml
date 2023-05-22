@@ -2,6 +2,11 @@
 {%- set columnCode = 'CodeCodingCode' -%}
 {%- set columnValue = 'ClinicalStatusCodingCode' -%}
 {%- set values = dbt_utils.get_column_values(table=source, column=columnCode) -%}
+{% for target in target_codes() %}
+{% if target not in values %}
+{% do values.append(target) %}
+{% endif %}
+{% endfor %}
 
 select
     %EXACT(SubjectReference) Key,

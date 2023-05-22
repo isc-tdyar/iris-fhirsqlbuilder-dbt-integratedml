@@ -7,10 +7,22 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 vars:
   fhirschema: fhir
-  # 230690007 - Stroke
-  target-code: 230690007
+
+  target: lung-cancer
   minimal-age: 30
   target-years: 30
+
+  stroke:
+    codes: 
+      - 230690007
+    codes-dataset: synthea-stroke-dataset-codes
+
+  lung-cancer:
+    codes: 
+      - 162573006
+      - 254637007
+      - 424132000
+    codes-dataset: synthea-lc-dataset-codes
 
 models:
   ml_on_fhir:

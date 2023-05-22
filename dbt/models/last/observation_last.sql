@@ -1,13 +1,3 @@
-{{
-    config(
-        materialized='table',
-        indexes=[
-            {'columns': ['SubjectReference', 'CodeCodingCode'], 'unique': True},
-            {'columns': ['CodeCodingCode']},
-        ]
-    )
-}}
-
 {%- set groupBy = "SubjectReference, CodeCodingCode, CodeCodingDisplay"  -%}
 
 select 
@@ -21,7 +11,8 @@ select
     LAST_VALUE(ValueString) over (PARTITION by {{ groupBy }}) ValueString
 from {{ source('fhir', 'Observation') }} Observation
 
-inner join {{ ref('synthea-stroke-dataset-codes') }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name)
+inner join {{ target_codes_dataset() }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name) 
+        or CodeCodingCode in ({{ target_codes() | join(', ') }})
 
 inner join {{ ref('by_patient' )}} Patient on Patient.Key = Observation.SubjectReference 
     and DATE(Observation.EffectiveDateTime) between Patient.TargetStartDate and Patient.TargetEndDate

@@ -1,5 +1,5 @@
-{% test meet_target(model, target_code) %}
+{% test meet_target(model) %}
 select 1 from (
-select count(*) cnt from {{ source('fhir', 'Encounter') }} where ReasonCodeCodingCode = {{ target_code }}
+select count(*) cnt from {{ source('fhir', 'Condition') }} where CodeCodingCode in ({{ target_codes() | join(', ') }})
 ) where cnt = 0
 {% endtest %}

@@ -8,11 +8,18 @@
 }}
 {% set patients = ref('by_patient') %}
 {% set tables = ['by_allergy', 'by_condition', 'by_procedure', 'by_encounter', 'by_observation'] %}
-{% set target = 'C-' ~ var('target-code') %}
+{% set except = target_columns() %}
+{% do except.append('Key') %}
 
 select 
     P.Key,
-    {{ adapter.quote(target) }},
+    -- target-codes
+    case when 
+    {%- for target in target_columns() %}
+    {{ adapter.quote(target) }} = 1 {% if not loop.last %}or{% endif -%}
+    {% endfor %}
+    then 1 else null end "target",
+    -- by_patient
     {{ dbt_utils.star(patients, except=['Key', 'TargetStartDate', 'TargetEndDate']) }},
     {% for table in tables %}
         -- {{ table }}
@@ -26,4 +33,4 @@ from {{ patients }}  P
     left join {{ ref(table) }} "{{ table }}" ON ( "{{ table }}".Key = P.Key )
 {% endfor %}
 
-order by {{ adapter.quote(target) }} desc
+order by "target" desc
