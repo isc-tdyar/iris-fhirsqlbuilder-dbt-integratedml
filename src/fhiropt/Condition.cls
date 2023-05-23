@@ -22,7 +22,7 @@ Storage SQL
 <Piece>1</Piece>
 </Data>
 <Data name="RecordedDate">
-<Piece>1</Piece>
+<Piece>2</Piece>
 </Data>
 <Global>^fhir.fhirsql.dataidx</Global>
 <RowIdSpec name="1">
