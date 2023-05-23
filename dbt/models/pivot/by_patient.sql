@@ -9,7 +9,7 @@
 select 
     Key,
     DATE(DATEADD(year, -{{ var('target-years') }}, TargetDate)) TargetStartDate,
-    TargetDate TargetEndDate,
+    DATE(DATEADD(month, -{{ var('target-horizon-months') }}, TargetDate)) TargetEndDate,
     "C-263495000",
     "C-424144002",
     "C-103579009",

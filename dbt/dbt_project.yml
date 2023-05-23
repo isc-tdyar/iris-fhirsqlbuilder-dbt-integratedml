@@ -11,6 +11,7 @@ vars:
   target: lung-cancer
   minimal-age: 30
   target-years: 40
+  target-horizon-months: 12
 
   stroke:
     codes: 
