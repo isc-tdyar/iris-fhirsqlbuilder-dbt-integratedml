@@ -1,4 +1,4 @@
-Class fhiropt.Observation Extends fhir.Observation
+Class fhiropt.Observation Extends (fhir.Observation, fhiropt.Base)
 {
 
 Property CodeCodingCode As %String(COLLATION = "EXACT") [ Calculated, SqlComputeCode = {set {*} = ##class(HS.HC.FHIRSQL.Utils.ResourceCommon).ExtractFHIR({%FHIR},"Observation.code.coding.code",,$lb("hl7.fhir.r4.core@4.0.1"))}, SqlComputed ];

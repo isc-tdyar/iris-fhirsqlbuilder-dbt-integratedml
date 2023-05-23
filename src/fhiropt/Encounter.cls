@@ -1,4 +1,4 @@
-Class fhiropt.Encounter Extends fhir.Encounter
+Class fhiropt.Encounter Extends (fhir.Encounter, fhiropt.Base)
 {
 
 /// Path: Encounter.reasonCode.coding.code

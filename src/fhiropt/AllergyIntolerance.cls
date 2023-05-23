@@ -1,4 +1,4 @@
-Class fhiropt.AllergyIntolerance Extends fhir.AllergyIntolerance
+Class fhiropt.AllergyIntolerance Extends (fhir.AllergyIntolerance, fhiropt.Base)
 {
 
 /// Path: AllergyIntolerance.clinicalStatus.coding.code

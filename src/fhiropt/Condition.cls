@@ -1,4 +1,4 @@
-Class fhiropt.Condition Extends fhir.Condition
+Class fhiropt.Condition Extends (fhir.Condition, fhiropt.Base)
 {
 
 /// Path: Condition.clinicalStatus.coding.code

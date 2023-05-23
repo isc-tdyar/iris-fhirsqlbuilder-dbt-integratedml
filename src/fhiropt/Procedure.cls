@@ -1,4 +1,4 @@
-Class fhiropt.Procedure Extends fhir.Procedure
+Class fhiropt.Procedure Extends (fhir.Procedure, fhiropt.Base)
 {
 
 /// Path: Procedure.code.coding.code
