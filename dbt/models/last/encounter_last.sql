@@ -7,7 +7,7 @@ select
 from {{ source('fhir', 'Encounter') }} Encounter
 
 inner join {{ target_codes_dataset() }} on ('C-' || ReasonCodeCodingCode = code and ReasonCodeCodingDisplay = name) 
-        or ReasonCodeCodingCode in ({{ target_codes() | join(', ') }})
+        {# or ReasonCodeCodingCode in ({{ target_codes() | join(', ') }}) #}
 
 inner join {{ ref('by_patient' )}} Patient on Patient.Key = Encounter.SubjectReference 
     and DATE(Encounter.PeriodStart) between Patient.TargetStartDate and Patient.TargetEndDate

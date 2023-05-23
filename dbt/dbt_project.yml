@@ -10,7 +10,7 @@ vars:
 
   target: lung-cancer
   minimal-age: 30
-  target-years: 30
+  target-years: 40
 
   stroke:
     codes: 
