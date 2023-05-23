@@ -23,7 +23,7 @@ select
     {{ dbt_utils.star(patients, except=['Key', 'TargetStartDate', 'TargetEndDate']) }},
     {% for table in tables %}
         -- {{ table }}
-        {{ dbt_utils.star(ref(table), except=['Key', target]) }}
+        {{ dbt_utils.star(ref(table), except=except) }}
         {% if not loop.last %},{% endif %}
     {% endfor %}
 
