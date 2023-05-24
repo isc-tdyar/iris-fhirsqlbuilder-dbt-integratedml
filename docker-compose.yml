@@ -1,15 +1,11 @@
 version: '3.7'
 services:
   iris: 
+    env_file: .env
     build: 
       context: .
       args:
         - IMAGE=containers.intersystems.com/intersystems/irishealth-ml:2023.1.0.229.0
-    environment:
-      - IRIS_USERNAME=fhir
-      - IRIS_PASSWORD=fhir
-      - IRIS_NAMESPACE=FHIRSERVER
-      - IRIS_FHIRSQLSCHEMA=fhir
     restart: unless-stopped
     ports:
       - 33782:1972
@@ -34,6 +30,23 @@ services:
     volumes:
       - ./data/fhir:/output
   
+  superset:
+    env_file: .env
+    depends_on:
+      - iris
+      - redis
+    build: 
+      context: superset
+    ports:
+      - 8088:8088
+    restart: unless-stopped
+  
+  redis:
+    image: redis:7    
+    restart: unless-stopped
+    volumes:
+      - redis:/data
+
   notebook:
     build: 
       context: notebook
@@ -47,3 +60,4 @@ services:
 volumes:
   irissys: 
   irissyslib: 
+  redis:
