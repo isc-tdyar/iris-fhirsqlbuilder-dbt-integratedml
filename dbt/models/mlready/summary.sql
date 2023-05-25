@@ -14,11 +14,12 @@
 select 
     P.Key,
     -- target-codes
-    case when 
+    case when exists (select 1 from {{ ref('target_patients' )}} TargetPatients where TargetPatients.Subjectreference = P.Key) then 1 else 0 end target,
+    {# case when 
     {%- for target in target_columns() %}
     {{ adapter.quote(target) }} = 1 {% if not loop.last %}or{% endif -%}
     {% endfor %}
-    then 1 else 0 end "target",
+    then 1 else 0 end "target", #}
     -- by_patient
     {{ dbt_utils.star(patients, except=['Key', 'TargetStartDate', 'TargetEndDate']) }},
     {% for table in tables %}

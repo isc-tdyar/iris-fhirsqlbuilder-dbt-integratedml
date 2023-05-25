@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='table',
+        indexes=[
+            {'name': 'SubjectReferenceIdx', 'columns': ['SubjectReference']},
+        ]
+    )
+}}
+
 select Subjectreference,DATE(RecordedDate) RecordedDate, CodeCodingCode, CodeCodingDisplay 
 from (
     select Subjectreference,
