@@ -10,7 +10,7 @@
 
 {% call statement('get_summary_location', fetch_result=True) %}
 select top 1 DataLocation from "%Dictionary"."StorageDefinition" where parent=(
-    select classname from information_schema.tables where table_name = 'summary' and table_schema='mlonfhir'
+    select classname from information_schema.tables where table_name = 'summary' and table_schema= '{{ this.schema }}'
 );
 {% endcall %}
 

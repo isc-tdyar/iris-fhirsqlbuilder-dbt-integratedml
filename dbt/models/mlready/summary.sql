@@ -3,6 +3,7 @@
         materialized='table',
         indexes=[
             {'name': 'KeyIdx', 'columns': ['Key'], 'unique': True},
+            {'name': 'TargetIdx', 'columns': ['target']},
         ]
     ) 
 }}
