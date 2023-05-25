@@ -6,6 +6,8 @@ ENV PATH="$PATH:/home/irisowner/.local/bin"
 
 RUN pip install irissqlcli
 
+COPY --from=community /docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
+
 COPY --from=community /docker-entrypoint.sh /
 
 COPY --from=community /home/irisowner/bin/iriscli /home/irisowner/bin/
