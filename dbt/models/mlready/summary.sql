@@ -19,7 +19,8 @@
 {% else %}
 {% set all = [] %}
 {% endif %}
-{% set present = target_columns() %}
+{# {% set present = target_columns() %} #}
+{% set present = [] %}
 
 select 
     P.Key,
