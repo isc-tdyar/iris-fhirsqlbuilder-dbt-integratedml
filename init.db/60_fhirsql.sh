@@ -1,6 +1,6 @@
 #!/usr/bin/env iriscli
 
-Do ##class(HS.FHIRServer.Tools.DataLoader).SubmitResourceFiles("/docker-entrypoint-initdb.d/fhir/", $namespace, "/fhir/r4")
+Do ##class(HS.FHIRServer.Tools.DataLoader).SubmitResourceFiles("/docker-entrypoint-initdb.d/fhir/", "FHIRSERVER", "/fhir/r4")
 
 zn "HSSYS"
 
