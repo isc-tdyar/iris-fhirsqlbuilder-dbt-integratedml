@@ -1,3 +1,6 @@
+-- depends_on: {{ ref('synthea-lc-dataset-codes') }}
+-- depends_on: {{ ref('synthea-stroke-dataset-codes') }}
+
 {{ 
     config(
         materialized='table',
@@ -11,23 +14,33 @@
 {% set tables = ['by_allergy', 'by_condition', 'by_procedure', 'by_encounter', 'by_observation'] %}
 {% set except = target_columns() %}
 {% do except.append('Key') %}
+{% if execute %}
+{% set all = run_query('select code from ' ~ target_codes_dataset()).columns[0].values() %}
+{% else %}
+{% set all = [] %}
+{% endif %}
+{% set present = target_columns() %}
 
 select 
     P.Key,
     -- target-codes
     case when exists (select 1 from {{ ref('target_patients' )}} TargetPatients where TargetPatients.Subjectreference = P.Key) then 1 else 0 end target,
-    {# case when 
-    {%- for target in target_columns() %}
-    {{ adapter.quote(target) }} = 1 {% if not loop.last %}or{% endif -%}
-    {% endfor %}
-    then 1 else 0 end "target", #}
     -- by_patient
-    {{ dbt_utils.star(patients, except=['Key', 'TargetStartDate', 'TargetEndDate']) }},
+    {% set cols = dbt_utils.get_filtered_columns_in_relation(patients, except=['Key', 'TargetStartDate', 'TargetEndDate']) %}
+    {% for col in cols %}{%- do present.append(col) -%}{{ adapter.quote(col) }},{{ '\n' }}{% endfor %}
     {% for table in tables %}
         -- {{ table }}
-        {{ dbt_utils.star(ref(table), except=except) }}
+        {% set cols = dbt_utils.get_filtered_columns_in_relation(ref(table), except=except) %}
+        {% for col in cols %}
+            {%- do present.append(col) -%}{{ adapter.quote(col) }}{% if not loop.last %},{{ '\n' }}{% endif -%}
+        {% endfor %}
         {% if not loop.last %},{% endif %}
-    {% endfor %}
+    {% endfor -%}
+
+    -- missing codes
+{% for col in all %}{% if col not in present -%}
+    , NULL as {{ adapter.quote(col) }}
+{% endif %}{% endfor %}
 
 from {{ patients }}  P
 
