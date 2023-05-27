@@ -28,19 +28,19 @@ select
     case when exists (select 1 from {{ ref('target_patients' )}} TargetPatients where TargetPatients.Subjectreference = P.Key) then 1 else 0 end target,
     -- by_patient
     {% set cols = dbt_utils.get_filtered_columns_in_relation(patients, except=['Key', 'TargetStartDate', 'TargetEndDate']) %}
-    {% for col in cols %}{%- do present.append(col) -%}{{ adapter.quote(col) }},{{ '\n' }}{% endfor %}
+    {% for col in cols %}{%- do present.append(col) -%}{{ adapter.quote(col) }} as {{ adapter.quote(modules.re.sub('[ -]+', '_', col)) }},{{ '\n' }}{% endfor %}
     {% for table in tables %}
         -- {{ table }}
         {% set cols = dbt_utils.get_filtered_columns_in_relation(ref(table), except=except) %}
         {% for col in cols %}
-            {%- do present.append(col) -%}{{ adapter.quote(col) }}{% if not loop.last %},{{ '\n' }}{% endif -%}
+            {%- do present.append(col) -%}{{ adapter.quote(col) }} as {{ adapter.quote(modules.re.sub('[ -]+', '_', col)) }}{% if not loop.last %},{{ '\n' }}{% endif -%}
         {% endfor %}
         {% if not loop.last %},{% endif %}
     {% endfor -%}
 
     -- missing codes
 {% for col in all %}{% if col not in present -%}
-    , NULL as {{ adapter.quote(col) }}
+    , NULL as {{ adapter.quote(modules.re.sub('[ -]+', '_', col)) }}
 {% endif %}{% endfor %}
 
 from {{ patients }}  P
