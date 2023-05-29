@@ -12,8 +12,20 @@ Property SubjectReference As %String(COLLATION = "EXACT") [ Calculated, SqlCompu
 
 Index DataIdx On (SubjectReference, ReasonCodeCodingCode, ReasonCodeCodingDisplay) [ Data = PeriodStart ];
 
+Index "$OptEncounter" [ Extent, Type = bitmap ];
+
 Storage SQL
 {
+<SQLMap name="$OptEncounter">
+<Global>^HSF01R.RsrcI</Global>
+<Subscript name="1">
+<Expression>"ResourceTypeIndex"</Expression>
+</Subscript>
+<Subscript name="2">
+<Expression>"Encounter"</Expression>
+</Subscript>
+<Type>bitmapextent</Type>
+</SQLMap>
 <SQLMap name="DataIdx">
 <Data name="PeriodStart">
 <Piece>1</Piece>
