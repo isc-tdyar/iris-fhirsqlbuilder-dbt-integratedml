@@ -2,7 +2,7 @@
     config(
         materialized='table',
         indexes=[
-            {'name': 'SubjectReferenceIdx', 'columns': ['SubjectReference']},
+            {'name': 'SubjectReferenceIdx', 'columns': ['SubjectReference'], 'data': ['RecordedDate']},
         ]
     )
 }}
