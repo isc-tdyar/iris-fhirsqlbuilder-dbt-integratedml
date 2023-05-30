@@ -1,7 +1,7 @@
 {{
     config(
         indexes=[
-            {'name': 'KeyIdx', 'columns': ['Key'], 'unique': True},
+            {'name': 'KeyIdx', 'columns': ['Key'], 'unique': True, 'data': ['TargetStartDate', 'TargetEndDate']},
         ]
     )
 }}
