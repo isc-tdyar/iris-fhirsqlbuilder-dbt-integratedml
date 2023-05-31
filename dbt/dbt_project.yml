@@ -21,6 +21,7 @@ vars:
     codes: 
       - 230690007
     codes-dataset: synthea-stroke-dataset-codes
+    lhs-dataset: lhs-stroke-ml-codes
 
   lung-cancer:
     codes: 
@@ -28,6 +29,7 @@ vars:
       - 254637007
       - 424132000
     codes-dataset: synthea-lc-dataset-codes
+    lhs-dataset: lhs-lc-ml-codes
 
 models:
   ml_on_fhir:

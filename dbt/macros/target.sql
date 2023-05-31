@@ -13,3 +13,8 @@
 {% macro target_codes_dataset() %}
 {{ return(ref(var(var('target'))['codes-dataset'])) }}
 {% endmacro %}
+
+{% macro target_lhs_dataset() %}
+{{ return(ref(var(var('target'))['lhs-dataset'])) }}
+{% endmacro %}
+
