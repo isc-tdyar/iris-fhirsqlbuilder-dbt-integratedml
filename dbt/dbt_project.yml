@@ -13,6 +13,10 @@ vars:
   target-years: 40
   target-horizon-months: 12
 
+  split-test-pct: 20
+  split-train-pct: 80
+  split-seed: 1234
+
   stroke:
     codes: 
       - 230690007

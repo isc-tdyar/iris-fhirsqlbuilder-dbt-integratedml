@@ -14,8 +14,8 @@
 SELECT
 	*
 FROM {{ ref('summary') }} WHERE 
-	(target = 0 and %ID %FIND %SQL.SAMPLE( '{{unquotedref('summary')}}' , 80 ,123 ))
+	(target = 0 and %ID %FIND %SQL.SAMPLE( '{{unquotedref('summary')}}' , {{var('split-train-pct')}} , {{var('split-seed')}} ))
 	OR 
-	(target = 1 and %ID %FIND %SQL.SAMPLE( '{{unquotedref('summary')}}' , 80 ,123 ))
+	(target = 1 and %ID %FIND %SQL.SAMPLE( '{{unquotedref('summary')}}' , {{var('split-train-pct')}} , {{var('split-seed')}} ))
 
 
