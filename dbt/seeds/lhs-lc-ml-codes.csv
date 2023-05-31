@@ -1,0 +1,58 @@
+﻿Code,Name
+C-103579009,race
+C-125680007,marital
+C-186034007,ethnic
+C-263495000,gender
+C-424144002,age
+C-72514-3,Pain severity - 0-10 verbal numeric rating [Score] - Reported
+C-140,Influenza seasonal injectable preservative free
+C-18262-6,Low Density Lipoprotein Cholesterol
+C-2085-9,High Density Lipoprotein Cholesterol
+C-2093-3,Total Cholesterol
+C-2571-8,Triglycerides
+C-39156-5,Body Mass Index
+C-710824005,Assessment of health and social care needs (procedure)
+C-72166-2,Tobacco smoking status NHIS
+C-8462-4,Diastolic Blood Pressure
+C-8480-6,Systolic Blood Pressure
+C-8867-4,Heart rate
+C-9279-1,Respiratory rate
+C-73595000,Stress (finding)
+C-21000-5,Erythrocyte distribution width [Entitic volume] by Automated count
+C-32623-1,Platelet mean volume [Entitic volume] in Blood by Automated count
+C-4544-3,Hematocrit [Volume Fraction] of Blood by Automated count
+C-6690-2,Leukocytes [#/volume] in Blood by Automated count
+C-718-7,Hemoglobin [Mass/volume] in Blood
+C-777-3,Platelets [#/volume] in Blood by Automated count
+C-785-6,MCH [Entitic mass] by Automated count
+C-786-4,MCHC [Mass/volume] by Automated count
+C-787-2,MCV [Entitic volume] by Automated count
+C-789-8,Erythrocytes [#/volume] in Blood by Automated count
+C-171207006,Depression screening (procedure)
+C-454711000124102,Depression screening using Patient Health Questionnaire Two-Item score (procedure)
+C-430193006,Medication Reconciliation (procedure)
+C-160903007,Full-time employment (finding)
+C-866148006,Screening for domestic abuse (procedure)
+C-710841007,Assessment of anxiety (procedure)
+C-428211000124100,Assessment of substance use (procedure)
+C-20565-8,Carbon Dioxide
+C-2069-3,Chloride
+C-2339-0,Glucose
+C-2947-0,Sodium
+C-38483-4,Creatinine
+C-49765-1,Calcium
+C-6298-4,Potassium
+C-6299-2,Urea Nitrogen
+C-160904001,Part-time employment (finding)
+C-713106006,Screening for drug abuse (procedure)
+C-763302001,Assessment using Alcohol Use Disorders Identification Test - Consumption (procedure)
+C-4548-4,Hemoglobin A1c/Hemoglobin.total in Blood
+C-73761001,Colonoscopy
+C-741062008,Not in labor force (finding)
+C-423315002,Limited social contact (finding)
+C-422650009,Social isolation (finding)
+C-762993000,Assessment using Morse Fall Scale (procedure)
+C-33914-3,Glomerular filtration rate/1.73 sq M.predicted
+C-444814009,Viral sinusitis (disorder)
+C-113,Td (adult) preservative free
+C-706893006,Victim of intimate partner abuse (finding)
