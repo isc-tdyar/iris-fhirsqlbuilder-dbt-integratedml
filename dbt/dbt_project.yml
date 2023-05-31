@@ -37,12 +37,26 @@ models:
 seeds:
   ml_on_fhir:
     synthea-lc-dataset-codes:
+      +full_refresh: true
       +column_types:
         code: varchar(20)
         name: varchar(1000)
       +alias: synthea_lc_codes
+      indexes:
+        - name: codeidx
+          columns: 
+            - code
+          data:
+            - name
     synthea-stroke-dataset-codes:
+      +full_refresh: true
       +column_types:
         code: varchar(20)
         name: varchar(1000)
       +alias: synthea_stroke_codes
+      indexes:
+        - name: codeidx
+          columns: 
+            - code
+          data:
+            - name

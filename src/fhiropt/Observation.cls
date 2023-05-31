@@ -11,8 +11,20 @@ Property SubjectReference As %String(COLLATION = "EXACT") [ Calculated, SqlCompu
 
 Index DataIdx On (SubjectReference, CodeCodingCode, CodeCodingDisplay) [ Data = (ValueQuantityValue, ValueQuantityUnit, ValueCodeableConceptCodingCode, ValueCodeableConceptCodingDisplay, ValueString, EffectiveDateTime), Type = index ];
 
+Index "$OptObservation" [ Extent, Type = bitmap ];
+
 Storage SQL
 {
+<SQLMap name="$OptObservation">
+<Global>^HSF01R.RsrcI</Global>
+<Subscript name="1">
+<Expression>"ResourceTypeIndex"</Expression>
+</Subscript>
+<Subscript name="2">
+<Expression>"Observation"</Expression>
+</Subscript>
+<Type>bitmapextent</Type>
+</SQLMap>
 <SQLMap name="DataIdx">
 <Data name="EffectiveDateTime">
 <Piece>6</Piece>

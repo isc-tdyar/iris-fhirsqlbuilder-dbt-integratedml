@@ -15,8 +15,20 @@ Property SubjectReference As %String(COLLATION = "EXACT") [ Calculated, SqlCompu
 
 Index DataIdx On (SubjectReference, CodeCodingCode, CodeCodingDisplay) [ Data = (ClinicalStatusCodingCode, RecordedDate), Type = index ];
 
+Index "$OptCondition" [ Extent, Type = bitmap ];
+
 Storage SQL
 {
+<SQLMap name="$OptCondition">
+<Global>^HSF01R.RsrcI</Global>
+<Subscript name="1">
+<Expression>"ResourceTypeIndex"</Expression>
+</Subscript>
+<Subscript name="2">
+<Expression>"Condition"</Expression>
+</Subscript>
+<Type>bitmapextent</Type>
+</SQLMap>
 <SQLMap name="DataIdx">
 <Data name="ClinicalStatusCodingCode">
 <Piece>1</Piece>

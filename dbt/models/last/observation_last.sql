@@ -9,7 +9,7 @@ select
     LAST_VALUE(ValueCodeableConceptCodingCode) over (PARTITION by {{ groupBy }}) ValueCodeableConceptCodingCode,
     LAST_VALUE(ValueCodeableConceptCodingDisplay) over (PARTITION by {{ groupBy }}) ValueCodeableConceptCodingDisplay,
     LAST_VALUE(ValueString) over (PARTITION by {{ groupBy }}) ValueString
-from {{ source('fhir', 'Observation') }} Observation
+from %FIRSTTABLE Patient {{ source('fhir', 'Observation') }} Observation
 
 inner join {{ target_codes_dataset() }} on ('C-' || CodeCodingCode = code and CodeCodingDisplay = name) 
 

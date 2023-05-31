@@ -15,8 +15,20 @@ Property PatientReference As %String(COLLATION = "EXACT") [ Calculated, SqlCompu
 
 Index DataIdx On (PatientReference, CodeCodingCode, CodeCodingDisplay) [ Data = (ClinicalStatusCodingCode, RecordedDate), Type = index ];
 
+Index "$OptAllergyIntolerance" [ Extent, Type = bitmap ];
+
 Storage SQL
 {
+<SQLMap name="$OptAllergyIntolerance">
+<Global>^HSF01R.RsrcI</Global>
+<Subscript name="1">
+<Expression>"ResourceTypeIndex"</Expression>
+</Subscript>
+<Subscript name="2">
+<Expression>"AllergyIntolerance"</Expression>
+</Subscript>
+<Type>bitmapextent</Type>
+</SQLMap>
 <SQLMap name="DataIdx">
 <Data name="ClinicalStatusCodingCode">
 <Piece>1</Piece>
