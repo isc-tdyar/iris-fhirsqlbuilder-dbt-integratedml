@@ -5,7 +5,7 @@
 
   create {% if index_config.unique -%}
     unique
-  {%- endif %} index
+  {% elif index_config.type%}{{ index_config.type}}{%- endif %} index
   "{{ index_name }}"
   on {{ relation }} ({{ comma_separated_columns }})
   {% if comma_separated_data %}
