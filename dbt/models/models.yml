@@ -46,6 +46,12 @@ models:
       - row_count_equals:
           target: "{{ ref('by_patient') }}"
 
+  - name: train
+    config:
+      materialized: mlmodel
+      predicting: target
+      with_dataset: "{{ var(var('target'))['lhs-dataset'] }}"
+
 # exposures:
 #   - name: mlready
 #     type: ml
