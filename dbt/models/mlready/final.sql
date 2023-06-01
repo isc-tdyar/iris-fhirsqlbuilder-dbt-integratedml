@@ -1,3 +1,15 @@
+{{
+    config(
+        materialized='table',
+        indexes=[
+            {'name': 'KeyIdx', 'columns': ['Key'], 'unique': True},
+            {'name': 'TargetIdx', 'columns': ['target', 'Key']},
+            {'name': 'PredictedIdx', 'columns': ['predicted', 'Key']},
+            {'name': 'ProbabilityIdx', 'columns': ['probability', 'Key']},
+        ]
+    )
+}}
+
 SELECT predict.Key,
        predict.predicted,
        predict.probability,
