@@ -9,7 +9,7 @@
         ]
     )
 }}
-{%- set model_name = this.schema ~ '_train' %}
+{%- set model_name = this.schema ~ '_ml_model' %}
 
 select
     Key,
