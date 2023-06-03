@@ -5,7 +5,9 @@
         materialized='table',
         indexes=[
             {'name': 'KeyIdx', 'columns': ['Key'], 'unique': True},
-            {'name': 'TargetIdx', 'columns': ['target']},
+            {'name': 'TargetIdx', 'columns': ['target', 'Key']},
+            {'name': 'PredictedIdx', 'columns': ['predicted'], 'data': ['Key', 'probability']},
+            {'name': 'ProbabilityIdx', 'columns': ['probability'], 'data': ['Key', 'predicted']},
         ]
     )
 }}
