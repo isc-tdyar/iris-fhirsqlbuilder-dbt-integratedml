@@ -10,7 +10,7 @@ In contrast, this repository demonstrates a similar workflow with the following 
 * Use _dbt_ to transform multiple SQL tables for Patient, Observation, etc. into a single ML-ready table
 * Build Machine Learning model within InterSystems IRIS IntegratedML, which enables data analysts to build and manage in-database ML models with elegant SQL syntax
 
-Therefore, we have provided an end-to-end demonstration of using InterSystems' unique capabilities in data management and Machine Learning, combined with open source projects Synthea and _dbt_, to process, analyze and develop machine learning 
+Therefore, we have provided an end-to-end demonstration of using InterSystems' unique capabilities in data management and Machine Learning, combined with open source projects Synthea and _dbt_, to process, analyze and develop machine learning models that are then accesses easily from SQL for instant viewing in dashboards like Superset!
 
 ## Prepare FHIR data for ML
 
