@@ -12,6 +12,8 @@ In contrast, this repository demonstrates a similar workflow with the following 
 
 Therefore, we have provided an end-to-end demonstration of using InterSystems' unique capabilities in data management and Machine Learning, combined with open source projects Synthea and _dbt_, to process, analyze and develop machine learning models that are then accesses easily from SQL for instant viewing in dashboards like Superset!
 
+This work was presented at InterSystems Global Summit 2023, see [presentation recording](https://www.intersystems.com/fhir-to-integratedml-can-you-get-there-from-here-intersystems/)!
+
 ## Prepare FHIR data for ML
 
 * Start environment with Docker Compose
